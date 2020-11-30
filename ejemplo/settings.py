@@ -30,7 +30,7 @@ DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aqueous-retreat-41989.herokuapp.com','127.0.0.1']
 
 #
 SECURE_HSTS_SECONDS = True
