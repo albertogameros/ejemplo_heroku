@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'ejemplo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-db_from_env = dj_database_url.config(conn_max_age=500)
+
 if DEBUG:
     DATABASES = {
         'default':{
@@ -95,10 +95,14 @@ if DEBUG:
     }
 
 else:
-    # Heroku: Update database configuration from $DATABASE_URL.
     import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
+    from decouple import config
+
+    DATABASES = {
+        'default':dj_database_url.config(
+            default = config('DATABASE_URL')
+        )
+    }
 
 
 # Password validation
